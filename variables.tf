@@ -14,6 +14,15 @@ variable "network_ip_range" {
   type        = string
 }
 
+variable "network_subnets" {
+  description = "Nested map of subnets to create"
+  type        = map(map(object({
+    cidr         = string
+    network_zone = string
+  })))
+  default     = {}
+}
+
 variable "all_labels" {
   description = "A map of labels to add to all resources"
   type        = map(string)
